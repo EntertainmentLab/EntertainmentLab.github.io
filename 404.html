@@ -9,12 +9,16 @@
   var recipe = location.pathname.match(/^\/recipe-for-disaster-report\/?(.*)$/)
   var greysV2 = location.pathname.match(/^\/greys-anatomy-report-v2(?:\/.*)?$/)
   var greys = location.pathname.match(/^\/greys-anatomy-report(?:\/(.*))?$/)
+  var solarOnScreen = location.pathname.match(/^\/Solar-on-Screen(?:\/.*)?$/)
   // Published artifacts from retired study-repo Pages (2026-07 consolidation):
   // the shareable files moved to elab.rare.org/research/<study>/ keeping their basenames.
   var ajlt = location.pathname.match(/^\/Food-Study-AJLT\/4-Outputs\/?(.*)$/)
   var madamSec = location.pathname.match(/^\/Madam-Secretary\/4-Outputs\/?(.*)$/)
   var promoter = location.pathname.match(/^\/Food-Study-The-Promoter\/4-Outputs\/?(.*)$/)
-  if (ajlt) {
+  if (solarOnScreen) {
+    // The retired study site now has a curated, stable survey-instrument page.
+    location.replace('https://elab.rare.org/research/solar-panel-stills/survey-instrument.html' + location.search + location.hash)
+  } else if (ajlt) {
     location.replace('https://elab.rare.org/research/and-just-like-that/' + ajlt[1] + location.search + location.hash)
   } else if (madamSec) {
     location.replace('https://elab.rare.org/research/madam-secretary/' + madamSec[1] + location.search + location.hash)
@@ -34,6 +38,7 @@
 </head>
 <body>
 <p>If you are not redirected automatically:
+<a href="https://elab.rare.org/research/solar-panel-stills/survey-instrument.html">Solar on Screen survey instrument</a> ·
 <a href="https://elab.rare.org/research/recipe-for-sustainability/">Recipe for Disaster report</a> ·
 <a href="https://elab.rare.org/research/greys-anatomy-report/">Grey's Anatomy report</a> ·
 <a href="https://rare.org/program/climate-culture/entertainment-lab/">Entertainment Lab</a></p>
