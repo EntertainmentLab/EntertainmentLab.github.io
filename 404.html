@@ -4,11 +4,18 @@
 <meta charset="utf-8">
 <title>Page moved</title>
 <script>
-  // Deep links into the retired recipe-for-disaster-report project site keep working:
-  // the report moved to elab.rare.org with identical file paths.
-  var m = location.pathname.match(/^\/recipe-for-disaster-report\/?(.*)$/)
-  if (m) {
-    location.replace('https://elab.rare.org/research/recipe-for-sustainability/' + m[1] + location.search + location.hash)
+  // Deep links into retired project sites keep working: the reports moved to
+  // elab.rare.org with identical file paths.
+  var recipe = location.pathname.match(/^\/recipe-for-disaster-report\/?(.*)$/)
+  var greysV2 = location.pathname.match(/^\/greys-anatomy-report-v2(?:\/.*)?$/)
+  var greys = location.pathname.match(/^\/greys-anatomy-report(?:\/(.*))?$/)
+  if (recipe) {
+    location.replace('https://elab.rare.org/research/recipe-for-sustainability/' + recipe[1] + location.search + location.hash)
+  } else if (greysV2) {
+    // v2 was an abandoned refactor with different paths; send to the report root.
+    location.replace('https://elab.rare.org/research/greys-anatomy-report/')
+  } else if (greys) {
+    location.replace('https://elab.rare.org/research/greys-anatomy-report/' + (greys[1] || '') + location.search + location.hash)
   } else {
     location.replace('https://rare.org/program/climate-culture/entertainment-lab/')
   }
@@ -17,6 +24,7 @@
 <body>
 <p>If you are not redirected automatically:
 <a href="https://elab.rare.org/research/recipe-for-sustainability/">Recipe for Disaster report</a> ·
+<a href="https://elab.rare.org/research/greys-anatomy-report/">Grey's Anatomy report</a> ·
 <a href="https://rare.org/program/climate-culture/entertainment-lab/">Entertainment Lab</a></p>
 </body>
 </html>
