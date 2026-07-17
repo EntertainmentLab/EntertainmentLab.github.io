@@ -9,7 +9,21 @@
   var recipe = location.pathname.match(/^\/recipe-for-disaster-report\/?(.*)$/)
   var greysV2 = location.pathname.match(/^\/greys-anatomy-report-v2(?:\/.*)?$/)
   var greys = location.pathname.match(/^\/greys-anatomy-report(?:\/(.*))?$/)
-  if (recipe) {
+  // Published artifacts from retired study-repo Pages (2026-07 consolidation):
+  // the shareable files moved to elab.rare.org/research/<study>/ keeping their basenames.
+  var ajlt = location.pathname.match(/^\/Food-Study-AJLT\/4-Outputs\/?(.*)$/)
+  var madamSec = location.pathname.match(/^\/Madam-Secretary\/4-Outputs\/?(.*)$/)
+  var promoter = location.pathname.match(/^\/Food-Study-The-Promoter\/4-Outputs\/?(.*)$/)
+  var netflixAd = location.pathname.match(/^\/Studio-Messaging-Netflix-Ad\/4-Outputs\/?(.*)$/)
+  if (ajlt) {
+    location.replace('https://elab.rare.org/research/and-just-like-that/' + ajlt[1] + location.search + location.hash)
+  } else if (madamSec) {
+    location.replace('https://elab.rare.org/research/madam-secretary/' + madamSec[1] + location.search + location.hash)
+  } else if (promoter) {
+    location.replace('https://elab.rare.org/research/the-promoter/' + promoter[1] + location.search + location.hash)
+  } else if (netflixAd) {
+    location.replace('https://elab.rare.org/research/studio-messaging-netflix-ad/' + netflixAd[1] + location.search + location.hash)
+  } else if (recipe) {
     location.replace('https://elab.rare.org/research/recipe-for-sustainability/' + recipe[1] + location.search + location.hash)
   } else if (greysV2) {
     // v2 was an abandoned refactor with different paths; send to the report root.
